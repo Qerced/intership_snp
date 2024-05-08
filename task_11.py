@@ -1,22 +1,28 @@
 class Dessert:
-    def __init__(self, name, calories):
+    def __init__(self, name=None, calories=0):
         self._name = name
         self._calories = calories
 
-    def get_name(self):
+    @property
+    def name(self):
         return self._name
 
-    def get_calories(self):
+    @property
+    def calories(self):
         return self._calories
 
-    def set_name(self, name):
+    @name.setter
+    def name(self, name):
         self._name = name
 
-    def set_calories(self, calories):
+    @calories.setter
+    def calories(self, calories):
         self._calories = calories
 
     def is_healthy(self):
-        return self._calories > 200
+        return self._calories < 200 if isinstance(
+            self._calories, int
+        ) else False
 
     def is_delicious(self):
         return True
